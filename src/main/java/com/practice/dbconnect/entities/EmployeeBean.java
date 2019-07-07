@@ -7,9 +7,14 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class Employees {
+public class EmployeeBean {
 
-    public Employees(String first_name, String last_name, String email, String phone_number, Date hire_date, String job_id, Double salary, Double commission_pct, Integer manager_id, Integer department_id){  }
+    public EmployeeBean(String first_name,
+                        String last_name, String email,
+                        String phone_number, Date hire_date,
+                        String job_id, Double salary,
+                        Double commission_pct,
+                        Integer manager_id, Integer department_id){  }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

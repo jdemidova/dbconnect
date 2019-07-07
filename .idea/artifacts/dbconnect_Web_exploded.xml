@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="dbconnect:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/dbconnect_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="dbconnect/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="dbconnect" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
