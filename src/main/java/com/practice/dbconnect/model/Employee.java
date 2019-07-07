@@ -1,4 +1,4 @@
-package com.practice.dbconnect.entities;
+package com.practice.dbconnect.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
