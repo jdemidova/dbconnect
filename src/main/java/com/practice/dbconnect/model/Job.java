@@ -1,9 +1,7 @@
 package com.practice.dbconnect.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "JOBS")
@@ -19,6 +17,10 @@ public class Job {
 
     @Column(name = "max_salary")
     private Integer maxSalary;
+
+    @JoinColumn
+    @ManyToOne
+    private List<Employee> employees;
 
     public Job() {}
 

@@ -61,6 +61,10 @@ public class Employee {
     @Column(name = "department_id")
     private Integer departmentId;
 
+    @JoinColumn(table = "JOBS", nullable = false)
+    @OneToMany(fetch = FetchType.LAZY)
+    private Job job;
+
     public Integer getEmployeeId() {
         return employeeId;
     }
