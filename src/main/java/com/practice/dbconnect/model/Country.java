@@ -1,14 +1,12 @@
 package com.practice.dbconnect.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "COUNTRIES")
 public class Country {
     @Id
+    @Column(name = "country_id", nullable = false)
     private String countryId;
 
     @Column(name = "country_name")
@@ -40,6 +38,9 @@ public class Country {
         this.countryName = countryName;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinTable(name = "DEPARTMENTS", joinColumns = {
+    @JoinColumn(referencedColumnName = "region_id" ,foreignKey = @ForeignKey(name = "COUNTR_REG_FK")) } )
     public Integer getRegionId() {
         return regionId;
     }

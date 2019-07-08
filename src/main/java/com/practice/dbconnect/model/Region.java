@@ -1,14 +1,12 @@
 package com.practice.dbconnect.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "REGIONS")
 public class Region {
     @Id
+    @Column(name = "region_id", nullable = false)
     private Double regionId;
 
     @Column(name = "region_name")

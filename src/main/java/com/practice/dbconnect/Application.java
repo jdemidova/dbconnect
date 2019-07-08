@@ -11,7 +11,7 @@ public class Application implements CommandLineRunner {
 
 
     @Autowired
-    private EmployeeService employeesController;
+    private EmployeeService employeesService;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -19,7 +19,7 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... strings) {
-        System.out.println(employeesController.getAll());
-        System.out.println(employeesController.queryFirst());
+        System.out.println(employeesService.getAll());
+        //System.out.println(employeesService.queryFirst());
     }
 }

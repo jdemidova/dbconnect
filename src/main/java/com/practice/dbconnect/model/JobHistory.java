@@ -1,24 +1,24 @@
 package com.practice.dbconnect.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@IdClass(JobHistoryId.class)
 @Table(name = "JOB_HISTORY")
 public class JobHistory {
     @Id
+    @Column(name = "employee_id", nullable = false)
     private Integer employeeId;
 
-    @Column(name = "start_date")
+    @Id
+    @Column(name = "start_date", nullable = false)
     private Date startDate;
 
-    @Column(name = "end_date")
+    @Column(name = "end_date", nullable = false)
     private Date endDate;
 
-    @Column(name = "job_id")
+    @Column(name = "job_id", nullable = false)
     private String jobId;
 
     @Column(name = "department_id")
@@ -35,6 +35,9 @@ public class JobHistory {
         this.departmentId = departmentId;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinTable(name = "EMPLOYEES", joinColumns = {
+            @JoinColumn(referencedColumnName = "employee_id" ,foreignKey = @ForeignKey(name = "JHIST_EMP_FK")) } )
     public Integer getEmployeeId() {
         return employeeId;
     }
@@ -59,6 +62,9 @@ public class JobHistory {
         this.endDate = endDate;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinTable(name = "JOBS", joinColumns = {
+            @JoinColumn(referencedColumnName = "job_id" ,foreignKey = @ForeignKey(name = "JHIST_JOB_FK")) } )
     public String getJobId() {
         return jobId;
     }
@@ -67,6 +73,9 @@ public class JobHistory {
         this.jobId = jobId;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinTable(name = "DEPARTMENTS", joinColumns = {
+            @JoinColumn(referencedColumnName = "department_id" ,foreignKey = @ForeignKey(name = "JHIST_DEPT_FK")) } )
     public Integer getDepartmentId() {
         return departmentId;
     }

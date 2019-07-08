@@ -4,7 +4,6 @@ import com.practice.dbconnect.model.Employee;
 import com.practice.dbconnect.repos.EmployeesRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
@@ -38,8 +37,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List queryFirst() {
-        List<Employee> result = entityManager.createNativeQuery("select * from HR.EMPLOYEES").getResultList();
+    public List<Employee> queryFirst() {
+        List<Employee> result = entityManager.createNativeQuery
+                ("select * from HR.EMPLOYEES").getResultList();
 
 
         return result;

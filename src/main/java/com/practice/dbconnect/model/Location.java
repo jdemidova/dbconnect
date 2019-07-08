@@ -1,14 +1,12 @@
 package com.practice.dbconnect.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "LOCATIONS")
 public class Location {
     @Id
+    @Column(name = "location_id", nullable = false)
     private Integer locationId;
 
     @Column(name = "street_address")
@@ -17,7 +15,7 @@ public class Location {
     @Column(name = "postal_code")
     private  String postalCode;
 
-    @Column(name = "city")
+    @Column(name = "city", nullable = false)
     private String city;
 
     @Column(name = "state_province")
@@ -79,6 +77,9 @@ public class Location {
         this.stateProvince = stateProvince;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinTable(name = "COUNTRIES", joinColumns = {
+            @JoinColumn(referencedColumnName = "country_id" ,foreignKey = @ForeignKey(name = "LOC_C_ID_FK")) } )
     public String getCountryId() {
         return countryId;
     }

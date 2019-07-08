@@ -1,17 +1,15 @@
 package com.practice.dbconnect.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "DEPARTMENTS")
 public class Department {
     @Id
+    @Column(name = "department_id", nullable = false)
     private Integer departmentId;
 
-    @Column(name = "department_name")
+    @Column(name = "department_name", nullable = false)
     private String departmentName;
 
     @Column(name = "manager_id")
@@ -46,6 +44,9 @@ public class Department {
         this.departmentName = departmentName;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinTable(name = "EMPLOYEES", joinColumns = {
+    @JoinColumn(referencedColumnName = "employee_id", foreignKey = @ForeignKey(name = "DEPT_MGR_FK")) } )
     public Integer getManagerId() {
         return managerId;
     }
@@ -54,6 +55,9 @@ public class Department {
         this.managerId = managerId;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinTable(name = "LOCATIONS", joinColumns = {
+    @JoinColumn(referencedColumnName = "location_id", foreignKey = @ForeignKey(name = "DEPT_LOC_FK")) } )
     public Integer getLocationId() {
         return locationId;
     }
