@@ -1,21 +1,36 @@
 package com.practice.dbconnect.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class LocationBean {
+@Table(name = "LOCATIONS")
+public class Location {
     @Id
     private Integer locationId;
+
+    @Column(name = "street_address")
     private String streetAddress;
+
+    @Column(name = "postal_code")
     private  String postalCode;
+
+    @Column(name = "city")
     private String city;
+
+    @Column(name = "state_province")
     private String stateProvince;
+
+    @Column(name = "country_id")
     private String countryId;
 
-    public LocationBean(Integer locationId, String streetAddress,
-                        String postalCode, String city,
-                        String stateProvince, String countryId) {
+    public Location() {}
+
+    public Location(Integer locationId, String streetAddress,
+                    String postalCode, String city,
+                    String stateProvince, String countryId) {
         this.locationId = locationId;
         this.streetAddress = streetAddress;
         this.postalCode = postalCode;

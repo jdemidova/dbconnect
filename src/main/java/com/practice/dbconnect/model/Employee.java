@@ -1,43 +1,64 @@
 package com.practice.dbconnect.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
-public class EmployeeBean {
+@Table(name = "EMPLOYEES")
+public class Employee {
 
-    public EmployeeBean(String first_name,
-                        String last_name, String email,
-                        String phone_number, Date hire_date,
-                        String job_id, Double salary,
-                        Double commission_pct,
-                        Integer manager_id, Integer department_id){  }
+    public Employee() {}
+
+    public Employee(Integer employeeId, String firstName,
+                    String lastName, String email,
+                    String phoneNumber, Date hireDate,
+                    String jobId, Double salary, Double commissionPct,
+                    Integer managerId, Integer departmentId) {
+        this.employeeId = employeeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.hireDate = hireDate;
+        this.jobId = jobId;
+        this.salary = salary;
+        this.commissionPct = commissionPct;
+        this.managerId = managerId;
+        this.departmentId = departmentId;
+    }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private Integer employeeId;
 
+    @Column(name = "first_name")
     private String firstName;
 
+    @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Column(name = "hire_date")
     private Date hireDate;
 
+    @Column(name = "job_id")
     private String jobId;
 
+    @Column(name = "salary")
     private Double salary;
 
+    @Column(name = "commission_pct")
     private Double commissionPct;
 
+    @Column(name = "manager_id")
     private Integer managerId;
 
+    @Column(name = "department_id")
     private Integer departmentId;
 
     public Integer getEmployeeId() {
@@ -126,5 +147,10 @@ public class EmployeeBean {
 
     public void setDepartmentId(Integer departmentId) {
         this.departmentId = departmentId;
+    }
+
+    @Override
+    public String toString() {
+        return this.firstName + " " + this.lastName;
     }
 }

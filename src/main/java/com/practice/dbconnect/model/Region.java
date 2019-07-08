@@ -1,15 +1,20 @@
 package com.practice.dbconnect.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class RegionBean {
+@Table(name = "REGIONS")
+public class Region {
     @Id
     private Double regionId;
+
+    @Column(name = "region_name")
     private String regionName;
 
-    public RegionBean(Double regionId, String regionName) {
+    public Region(Double regionId, String regionName) {
         this.regionId = regionId;
         this.regionName = regionName;
     }

@@ -1,18 +1,29 @@
 package com.practice.dbconnect.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class JobBean {
+@Table(name = "JOBS")
+public class Job {
     @Id
     private String jobId;
+
+    @Column(name = "job_title")
     private String jobTitle;
+
+    @Column(name = "min_salary")
     private Integer minSalary;
+
+    @Column(name = "max_salary")
     private Integer maxSalary;
 
-    public JobBean(String jobId, String jobTitle,
-                   Integer minSalary, Integer maxSalary) {
+    public Job() {}
+
+    public Job(String jobId, String jobTitle,
+               Integer minSalary, Integer maxSalary) {
         this.jobId = jobId;
         this.jobTitle = jobTitle;
         this.minSalary = minSalary;

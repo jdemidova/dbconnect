@@ -1,20 +1,28 @@
 package com.practice.dbconnect.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class CountryBean {
+@Table(name = "COUNTRIES")
+public class Country {
     @Id
     private String countryId;
+
+    @Column(name = "country_name")
     private String countryName;
+
+    @Column(name = "region_id")
     private Integer regionId;
 
-    public CountryBean(String countryId, String countryName, Integer regionId) {
+    public Country(String countryId, String countryName, Integer regionId) {
         this.countryId = countryId;
         this.countryName = countryName;
         this.regionId = regionId;
     }
+    public Country() {}
 
     public String getCountryId() {
         return countryId;

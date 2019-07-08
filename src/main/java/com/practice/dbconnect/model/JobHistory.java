@@ -1,21 +1,33 @@
 package com.practice.dbconnect.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-public class JobHistoryBean {
+@Table(name = "JOB_HISTORY")
+public class JobHistory {
     @Id
     private Integer employeeId;
 
+    @Column(name = "start_date")
     private Date startDate;
+
+    @Column(name = "end_date")
     private Date endDate;
+
+    @Column(name = "job_id")
     private String jobId;
+
+    @Column(name = "department_id")
     private Integer departmentId;
 
-    public JobHistoryBean(Integer employeeId, Date startDate,
-                          Date endDate, String jobId, Integer departmentId) {
+    public JobHistory() {}
+
+    public JobHistory(Integer employeeId, Date startDate,
+                      Date endDate, String jobId, Integer departmentId) {
         this.employeeId = employeeId;
         this.startDate = startDate;
         this.endDate = endDate;

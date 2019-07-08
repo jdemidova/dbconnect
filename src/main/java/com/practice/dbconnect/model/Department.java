@@ -1,18 +1,29 @@
 package com.practice.dbconnect.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class DepartmentBean {
+@Table(name = "DEPARTMENTS")
+public class Department {
     @Id
     private Integer departmentId;
+
+    @Column(name = "department_name")
     private String departmentName;
+
+    @Column(name = "manager_id")
     private Integer managerId;
+
+    @Column(name = "location_id")
     private Integer locationId;
 
-    public DepartmentBean(Integer departmentId,
-                          String departmentName, Integer managerId, Integer locationId) {
+    public Department() {}
+
+    public Department(Integer departmentId,
+                      String departmentName, Integer managerId, Integer locationId) {
         this.departmentId = departmentId;
         this.departmentName = departmentName;
         this.managerId = managerId;
